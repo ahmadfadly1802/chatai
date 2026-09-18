@@ -41,7 +41,7 @@
       align-items: center;
     }
 
-    /* ========== AUTH SCREEN ========== */
+    
     #auth-screen {
       width: 100%;
       max-width: 420px;
@@ -171,7 +171,7 @@
       display: none;
     }
 
-    /* ========== MAIN APP ========== */
+    
     #app {
       display: none;
       width: 100%;
@@ -195,7 +195,7 @@
       height: 100%;
     }
 
-    /* LEFT SIDEBAR */
+    
     .sidebar {
       width: 380px;
       min-width: 320px;
@@ -664,12 +664,12 @@
       background: var(--wa-hover);
     }
 
-    /* LOGOUT CONFIRM */
+    
     .logout-btn {
       color: #E53935 !important;
     }
 
-    /* MOBILE RESPONSIVE */
+
     @media (max-width: 768px) {
       body {
         background: white;
@@ -718,7 +718,7 @@
       }
     }
 
-    /* Scrollbar */
+   
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -733,7 +733,7 @@
 </head>
 <body>
 
-  <!-- ========== AUTH SCREEN ========== -->
+
   <div id="auth-screen">
     <div class="auth-header">
       <i class="fab fa-whatsapp"></i>
@@ -749,7 +749,7 @@
       <div id="auth-error" class="auth-error"></div>
       <div id="auth-success" class="auth-success"></div>
 
-      <!-- LOGIN FORM -->
+      
       <form id="login-form">
         <div class="form-group">
           <label>Username</label>
@@ -762,7 +762,7 @@
         <button type="submit" class="btn-primary">Masuk</button>
       </form>
 
-      <!-- REGISTER FORM -->
+
       <form id="register-form" style="display:none;">
         <div class="form-group">
           <label>Nama Lengkap</label>
@@ -781,10 +781,9 @@
     </div>
   </div>
 
-  <!-- ========== MAIN APP ========== -->
+
   <div id="app">
     <div class="app-container">
-      <!-- SIDEBAR -->
       <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
           <div class="user-info">
@@ -803,11 +802,11 @@
           </div>
         </div>
         <div class="chat-list" id="chat-list">
-          <!-- Chat items will be rendered here -->
+        
         </div>
       </div>
 
-      <!-- CHAT AREA -->
+
       <div class="chat-area" id="chat-area">
         <div class="no-chat-selected" id="no-chat">
           <i class="fab fa-whatsapp"></i>
@@ -848,7 +847,6 @@
     </div>
   </div>
 
-  <!-- NEW CHAT MODAL -->
   <div class="modal-overlay" id="new-chat-modal">
     <div class="modal">
       <div class="modal-header">
@@ -870,7 +868,7 @@
   </div>
 
   <script>
-    // ==================== DATA LAYER ====================
+   
     const STORAGE_USERS = 'chatapp_users';
     const STORAGE_MESSAGES = 'chatapp_messages';
     const STORAGE_SESSION = 'chatapp_session';
@@ -1127,7 +1125,7 @@
       renderMessages();
       renderChatList(document.getElementById('search-chats').value);
 
-      // Mobile: hide sidebar
+
       if (window.innerWidth <= 768) {
         document.getElementById('sidebar').classList.add('hidden-mobile');
         document.getElementById('chat-area').classList.remove('hidden');
@@ -1182,7 +1180,6 @@
       container.scrollTop = container.scrollHeight;
     }
 
-    // ==================== SEND MESSAGE ====================
     const messageInput = document.getElementById('message-input');
     const btnSend = document.getElementById('btn-send');
 
@@ -1220,7 +1217,6 @@
       renderChatList(document.getElementById('search-chats').value);
     }
 
-    // ==================== NEW CHAT ====================
     const newChatModal = document.getElementById('new-chat-modal');
 
     document.getElementById('btn-new-chat').addEventListener('click', () => {
@@ -1263,7 +1259,6 @@
       openChat(username);
     });
 
-    // ==================== HELPERS ====================
     function formatTime(ts) {
       const d = new Date(ts);
       const now = new Date();
@@ -1282,7 +1277,6 @@
       return div.innerHTML;
     }
 
-    // ==================== POLLING (for multi-tab / same browser) ====================
     function startPolling() {
       stopPolling();
       pollInterval = setInterval(() => {
@@ -1295,8 +1289,7 @@
       if (pollInterval) clearInterval(pollInterval);
     }
 
-    // ==================== INIT ====================
-    // Check existing session
+  
     const session = getSession();
     if (session) {
       const users = getUsers();
@@ -1308,7 +1301,6 @@
       }
     }
 
-    // Pre-create demo accounts if empty (optional convenience)
     if (Object.keys(getUsers()).length === 0) {
       const users = {
         'alice': { name: 'Alice', password: '1234', createdAt: Date.now() },
